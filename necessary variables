@@ -1,0 +1,4 @@
+speech_count = []
+timestamps = []
+wtf_count = 0
+total_speech_count = 0
