@@ -1,0 +1,9 @@
+def display_productivity_graph():
+    plt.plot(timestamps, speech_count)
+    plt.xlabel("Time")
+    plt.ylabel("WTF Count")
+    plt.title("Productivity Graph")
+    plt.xticks(rotation=45)
+    plt.show()
+
+display_productivity_graph()
