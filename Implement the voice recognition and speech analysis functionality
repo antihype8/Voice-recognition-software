@@ -1,0 +1,34 @@
+def analyze_speech(audio):
+    global wtf_count
+    global total_speech_count
+
+    recognizer = sr.Recognizer()
+    try:
+        speech = recognizer.recognize_google(audio)
+        print("Recognized Speech:", speech)
+
+        # Perform the required analysis on the recognized speech
+        # For example, counting the occurrence of specific words like 'WTF'
+        if "WTF" in speech.upper():
+            wtf_count += 1
+
+        total_speech_count += 1
+    except sr.UnknownValueError:
+        print("Unable to recognize speech")
+    except sr.RequestError:
+        print("Speech recognition service is unavailable")
+
+def start_voice_recognition():
+    recognizer = sr.Recognizer()
+    microphone = sr.Microphone()
+
+    with microphone as source:
+        recognizer.adjust_for_ambient_noise(source)
+
+    while True:
+        with microphone as source:
+            audio = recognizer.listen(source)
+
+        analyze_speech(audio)
+
+start_voice_recognition()
