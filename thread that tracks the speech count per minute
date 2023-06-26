@@ -1,0 +1,15 @@
+def track_speech_count():
+    global wtf_count
+    global total_speech_count
+
+    while True:
+        if wtf_count > 0:
+            speech_count.append(wtf_count)
+            timestamps.append(datetime.datetime.now().strftime("%H:%M:%S"))
+            wtf_count = 0
+
+        # Adjust the time interval (in seconds) as per your requirement
+        # For example, 60 seconds (1 minute) interval:
+        threading.Timer(60, track_speech_count).start()
+
+track_speech_count()
